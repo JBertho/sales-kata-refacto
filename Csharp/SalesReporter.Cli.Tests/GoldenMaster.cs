@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using NFluent;
+using SalesReporter.Cli2;
 using Xunit;
 
 namespace SalesReporter.Cli.Tests;
@@ -14,7 +15,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Main(new string[]{"print","./data.csv"});
+        Program2.Execute(new string[]{"print","./data.csv"}, new ConsoleLogger());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===
@@ -37,7 +38,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Main(new string[]{"report","./data.csv"});
+        Program2.Execute(new string[]{"report","./data.csv"},new ConsoleLogger());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===
@@ -59,7 +60,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Main(new string[]{"not_found","./data.csv"});
+        Program2.Execute(new string[]{"not_found","./data.csv"}, new ConsoleLogger());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===

@@ -1,9 +1,16 @@
-﻿public static class Program2 
+﻿using SalesReporter.Cli2;
+
+public static class Program2 
 {  
  	public static void Main(string[] args)  
  	{ 
-	    //add a title to our app    
-		Console.WriteLine("=== Sales Viewer ===");  
+	   Execute(args, new ConsoleLogger());
+ }
+
+    public static void Execute(string[] args, ILogger Logger)
+    {
+	//add a title to our app    
+		Logger.printLine("=== Sales Viewer ===");  
 		//extract the commandType name from the args    
 		string commandType = args.Length > 0 ? args[0] : "unknown";    
 		string file = args.Length >= 2 ? args[1] : "./data.csv";  
@@ -27,9 +34,9 @@
 			var headerString  = String.Join(  " | ",   
 					columnInfos.Select(x=>x.name).Select(  
 			 		(val,ind) => val.PadLeft(16)));  
-			Console.WriteLine("+" + new String('-', headerString.Length + 2) + "+");  
-			Console.WriteLine("| " + headerString + " |");  
-			Console.WriteLine("+" + new String('-', headerString.Length +2 ) + "+");  
+			Logger.printLine("+" + new String('-', headerString.Length + 2) + "+");  
+			Logger.printLine("| " + headerString + " |");  
+			Logger.printLine("+" + new String('-', headerString.Length +2 ) + "+");  
 
 			 //then add each line to the table    
 			foreach (string line in dataLines)    
@@ -38,10 +45,10 @@
 			 	var tableLine  = String.Join(" | ",   
 						line.Split(',').Select(  
 			 				(val,ind) => val.PadLeft(16)));  
-			 	Console.WriteLine($"| {tableLine} |");  
+			 	Logger.printLine($"| {tableLine} |");  
 			}
 			
-			Console.WriteLine("+" + new String('-', headerString.Length+2) + "+");  
+			Logger.printLine("+" + new String('-', headerString.Length+2) + "+");  
 			// if commandType is report  
 		}   
 		else if (commandType == "report")    
@@ -71,20 +78,25 @@
 			AverageAmountPerSale = Math.Round(AmountOfAllSales / salesCount,2);    
 			//we compute the average item price sold    
 			AverageItemPriceSold = Math.Round(AmountOfAllSales / totalItemsSold,2);    
-			Console.WriteLine($"+{new String('-',45)}+");  
-			Console.WriteLine($"| {" Number of sales".PadLeft(30)} | {salesCount.ToString().PadLeft(10)} |");  
-			Console.WriteLine($"| {" Number of clients".PadLeft(30)} | {clients.Count.ToString().PadLeft(10)} |");  
-			Console.WriteLine($"| {" Total items sold".PadLeft(30)} | {totalItemsSold.ToString().PadLeft(10)} |");  
-			Console.WriteLine($"| {" Total sales amount".PadLeft(30)} | {Math.Round(AmountOfAllSales,2).ToString().PadLeft(10)} |");  
-			Console.WriteLine($"| {" Average amount/sale".PadLeft(30)} | {AverageAmountPerSale.ToString().PadLeft(10)} |");  
-			Console.WriteLine($"| {" Average item price".PadLeft(30)} | {AverageItemPriceSold.ToString().PadLeft(10)} |");  
-			Console.WriteLine($"+{new String('-',45)}+");  
+			Logger.printLine($"+{new String('-',45)}+");  
+			Logger.printLine($"| {" Number of sales".PadLeft(30)} | {salesCount.ToString().PadLeft(10)} |");  
+			Logger.printLine($"| {" Number of clients".PadLeft(30)} | {clients.Count.ToString().PadLeft(10)} |");  
+			Logger.printLine($"| {" Total items sold".PadLeft(30)} | {totalItemsSold.ToString().PadLeft(10)} |");  
+			Logger.printLine($"| {" Total sales amount".PadLeft(30)} | {Math.Round(AmountOfAllSales,2).ToString().PadLeft(10)} |");  
+			Logger.printLine($"| {" Average amount/sale".PadLeft(30)} | {AverageAmountPerSale.ToString().PadLeft(10)} |");  
+			Logger.printLine($"| {" Average item price".PadLeft(30)} | {AverageItemPriceSold.ToString().PadLeft(10)} |");  
+			Logger.printLine($"+{new String('-',45)}+");  
 		}
 		else    
 		{    
-			Console.WriteLine("[ERR] your commandType is not valid ");    
-			Console.WriteLine("Help: ");    
-			Console.WriteLine("    - [print]  : show the content of our commerce records in data.csv");    
-			Console.WriteLine("    - [report] : show a summary from data.csv records ");    
+			Logger.printLine("[ERR] your commandType is not valid ");    
+			Logger.printLine("Help: ");    
+			Logger.printLine("    - [print]  : show the content of our commerce records in data.csv");    
+			Logger.printLine("    - [report] : show a summary from data.csv records ");    
 		}  
- }}
+    }
+    
+}
+
+
+
