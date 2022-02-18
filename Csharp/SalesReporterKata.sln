@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesReporter.Cli", "SalesR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesReporter.Cli.Tests", "SalesReporter.Cli.Tests\SalesReporter.Cli.Tests.csproj", "{503C5229-B130-4E09-AA1C-DEDD80CB8009}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesReporter.Cli2", "SalesReporter.Cli2\SalesReporter.Cli2.csproj", "{CE160273-9592-4458-AB59-973461C9090E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D949E714-4EDB-4407-BDA5-901541358F4A} = {DC90C598-068A-4916-BE90-51FCA7CEB1A7}
 		{503C5229-B130-4E09-AA1C-DEDD80CB8009} = {DC90C598-068A-4916-BE90-51FCA7CEB1A7}
+		{CE160273-9592-4458-AB59-973461C9090E} = {DC90C598-068A-4916-BE90-51FCA7CEB1A7}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D949E714-4EDB-4407-BDA5-901541358F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +27,9 @@ Global
 		{503C5229-B130-4E09-AA1C-DEDD80CB8009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{503C5229-B130-4E09-AA1C-DEDD80CB8009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{503C5229-B130-4E09-AA1C-DEDD80CB8009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE160273-9592-4458-AB59-973461C9090E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE160273-9592-4458-AB59-973461C9090E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE160273-9592-4458-AB59-973461C9090E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE160273-9592-4458-AB59-973461C9090E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,8 +1,8 @@
 using System;
 using System.IO;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using NFluent;
 using Xunit;
-using SalesReporter.Cli;
 
 namespace SalesReporter.Cli.Tests;
 
