@@ -15,7 +15,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Execute(new string[]{"print","./data.csv"}, new ConsoleLogger());
+        Program2.Execute(new string[]{"print","./data.csv"}, new ConsoleLogger(), new FileReader());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===
@@ -38,7 +38,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Execute(new string[]{"report","./data.csv"},new ConsoleLogger());
+        Program2.Execute(new string[]{"report","./data.csv"},new ConsoleLogger(), new FileReader());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===
@@ -60,7 +60,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program2.Execute(new string[]{"not_found","./data.csv"}, new ConsoleLogger());
+        Program2.Execute(new string[]{"not_found","./data.csv"}, new ConsoleLogger(), new FileReader());
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===

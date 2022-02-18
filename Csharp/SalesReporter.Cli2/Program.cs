@@ -4,10 +4,10 @@ public static class Program2
 {  
  	public static void Main(string[] args)  
  	{ 
-	   Execute(args, new ConsoleLogger());
+	   Execute(args, new ConsoleLogger(), new FileReader());
  }
 
-    public static void Execute(string[] args, ILogger Logger)
+    public static void Execute(string[] args, ILogger Logger, IFileReader fileReader)
     {
 	//add a title to our app    
 		Logger.printLine("=== Sales Viewer ===");  
@@ -16,7 +16,7 @@ public static class Program2
 		string file = args.Length >= 2 ? args[1] : "./data.csv";  
 		 //read content of our data file    
 			  //[2012-10-30] rui : actually it only works with this file, maybe it's a good idea to pass file //name as parameter to this app later?    
-		string[] dataContentString = File.ReadAllLines(file);    
+		string[] dataContentString = fileReader.Read(file);    
 		//if commandType is print    
 		if (commandType == "print")    
       	{    
