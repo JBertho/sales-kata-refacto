@@ -43,12 +43,30 @@ public class GoldenMaster
             @$"=== Sales Viewer ===
 +---------------------------------------------+
 |                Number of sales |          5 |
-|              Number of clients |          0 |
+|              Number of clients |          3 |
 |               Total items sold |         11 |
 |             Total sales amount |    1441.84 |
 |            Average amount/sale |     288.37 |
 |             Average item price |     131.08 |
 +---------------------------------------------+
+"
+        );
+    }
+    
+    [Fact]
+    public void SampleData_on_not_found_command()
+    {
+        using var writer = new StringWriter();
+        Console.SetOut(writer);
+        Console.SetError(writer);
+        Program2.Main(new string[]{"not_found","./data.csv"});
+        var sut = writer.ToString();
+        Check.That(sut).IsEqualTo(
+            @$"=== Sales Viewer ===
+[ERR] your commandType is not valid 
+Help: 
+    - [print]  : show the content of our commerce records in data.csv
+    - [report] : show a summary from data.csv records 
 "
         );
     }
