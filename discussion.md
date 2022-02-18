@@ -11,3 +11,9 @@ Les structures possible du projet :
   - Le print / le report / le mode erreur
 - Des modeles peuvent être créer pour mieux structurer le projet : 
   - Une colonne / Information de report
+
+Pour les test :
+- On peut garder les deux tests golden master de départ pour essayer les deux
+comportement principaux
+- Ajout d'un test pour le cas d'erreur
+- Ajout de test supplémentaire dans le cas ou on doit passer dans certaines conditions non testés
