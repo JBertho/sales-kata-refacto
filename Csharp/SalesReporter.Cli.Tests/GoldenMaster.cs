@@ -14,7 +14,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program.Main(new string[]{"print","./data.csv"});
+        Program2.Main(new string[]{"print","./data.csv"});
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===
@@ -37,7 +37,7 @@ public class GoldenMaster
         using var writer = new StringWriter();
         Console.SetOut(writer);
         Console.SetError(writer);
-        Program.Main(new string[]{"report","./data.csv"});
+        Program2.Main(new string[]{"report","./data.csv"});
         var sut = writer.ToString();
         Check.That(sut).IsEqualTo(
             @$"=== Sales Viewer ===

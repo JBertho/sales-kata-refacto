@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SalesReporter.Cli\SalesReporter.Cli.csproj" />
+      <ProjectReference Include="..\SalesReporter.Cli2\SalesReporter.Cli2.csproj" />
     </ItemGroup>
     <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
         <Copy SourceFiles="data.csv" DestinationFolder="$(OutDir)" />

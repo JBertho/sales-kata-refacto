@@ -2,7 +2,7 @@
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f7d5bfc6_002De5b1_002D4347_002D9d9c_002D236cd95e6ce9/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::07E2BF3F-A1DD-4558-8084-E2BC053A04E2::net6.0::Calculator.Tests.Sample.Test&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::503C5229-B130-4E09-AA1C-DEDD80CB8009::net6.0::SalesReporter.Cli.Tests.GoldenMaster&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	
