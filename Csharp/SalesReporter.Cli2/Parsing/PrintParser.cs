@@ -6,26 +6,43 @@ public class PrintParser: IParser
 {
     public void Handle(string[] lines, ILogger logger)
     {
-        string headerLine = lines[0];    
-        string[] dataLines = lines[1..(lines.Length)];  
-        var columnInfos = new List<Column>();  
+        var headerLine = lines[0];    
+        var dataLines = lines[1..(lines.Length)];
+        var columnInfos = GenerateColumns(headerLine);
+
+        var headerString = String.Join(" | ", columnInfos.Select(x => x.GetSoftpaddingLeftName()));
+        displayHeader(headerString, logger);
+
+        var tableLines = generateTableLines(dataLines);
+        foreach (var tableLine in tableLines)
+        {
+            displayLine(tableLine, logger);
+        }
+        displayEndTab(logger,headerString.Length+2);
+    }
+
+    private List<string> generateTableLines(string[] dataLines)
+    {
+        var tableLines = new List<string>();
+        foreach (string line in dataLines)
+        {
+            tableLines.Add(String.Join(" | ",
+                line.Split(',').Select(
+                    (val, ind) => val.PadLeft(16))));
+        }
+
+        return tableLines;
+    }
+
+    private List<Column> GenerateColumns(string headerLine)
+    {
+        var columnInfos = new List<Column>();
         foreach (var columName in headerLine.Split(','))  
         { 
             columnInfos.Add(new Column(columName));  
         }
 
-        var headerString = String.Join(" | ", columnInfos.Select(x => x.GetSoftpaddingLeftName()));
-        displayHeader(headerString, logger);
-        
-        foreach (string line in dataLines)    
-        {   
-            var tableLine  = String.Join(" | ",   
-                line.Split(',').Select(  
-                    (val,ind) => val.PadLeft(16)));
-            displayLine(tableLine, logger);
-        }
-
-        displayEndTab(logger,headerString.Length+2);
+        return columnInfos;
     }
 
     private void displayEndTab(ILogger logger, int spacing)
